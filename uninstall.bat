@@ -1,0 +1,16 @@
+@echo off
+
+echo Killing hopper.exe if running...
+taskkill /im hopper.exe /f
+
+echo Deleting from right-click menu for folder backgrounds...
+reg delete HKCU\SOFTWARE\Classes\Directory\Background\Shell\Hopper         /f /reg:64
+
+echo Deleting form right-click menu for folder icons...
+reg delete HKCU\SOFTWARE\Classes\Directory\Shell\Hopper                    /f /reg:64
+
+echo Deleting from control panel...
+reg delete HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Hopper /f /reg:64
+
+echo Removing installation directory...
+start cmd /q /c rd /s /q "%%LocalAppData%%\Hopper"
